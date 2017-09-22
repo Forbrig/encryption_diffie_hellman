@@ -30,8 +30,8 @@ int main ( ) {
 	printf("ALICE PRIVATE KEY %d\n", alice->private_key);
 	printf("BOB PRIVATE KEY %d\n", bob->private_key);
 	
-	printf("ALICE PRIVATE KEY %d\n", alice->encrypted_key);
-	printf("BOB PRIVATE KEY %d\n", bob->encrypted_key);
+	printf("ALICE PRIVATE KEY %ld\n", alice->encrypted_key);
+	printf("BOB PRIVATE KEY %ld\n", bob->encrypted_key);
 	
 	printf("ALICE FINAL KEY %d\n", dh_final_key(alice));
 	printf("BOB FINAL KEY %d\n", dh_final_key(bob));
