@@ -16,7 +16,7 @@ int main ( ) {
 	printf("%s\n", encrypt);
 
 	decrypt = cc_decryption(encrypt, key);
-	//printf("%s\n", decrypt);
+	printf("%s\n", decrypt);
 
 
 	return 0;
