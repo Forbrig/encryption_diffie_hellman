@@ -1,6 +1,6 @@
-#include "cesar_func.h"
+#include "vigenere_func.h"
 
-char *cc_encryption(char* msg, int key) {
+char *cc_encryption(char* msg, char* key) {
 	char* encrypt = malloc(MAX_BUF * sizeof(char));
 	
 	strcpy(encrypt, msg);

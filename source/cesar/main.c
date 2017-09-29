@@ -1,4 +1,4 @@
-#include "cesar_func.h"
+#include "vigenere_func.h"
 
 int main ( ) {
 	char msg[MAX_BUF] = "";
