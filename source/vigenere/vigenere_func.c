@@ -7,13 +7,17 @@ char *vc_repeat_key(char* msg, char* key) {
 	
 	for (i = 0; i < strlen(msg); i++) {
 		
+		repeated_key[i] = key[i % (strlen(key)-1)];
+		
+		
+		/*
 		if (i > strlen(key - 1)) {
-			printf("%d\n", ((strlen(key)-1) * i);
-		} else {
-			printf("%d\n", i);
+			printf("%d\n", i % (strlen(key)-1));
 		}
+		*/
 		j++;
 	}
+	repeated_key[j-1] = '\0';
 	return repeated_key;
 }
 
