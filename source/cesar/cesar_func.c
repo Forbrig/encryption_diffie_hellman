@@ -1,6 +1,6 @@
-#include "vigenere_func.h"
+#include "cesar_func.h"
 
-char *cc_encryption(char* msg, char* key) {
+char *cc_encryption(char* msg, int key) {
 	char* encrypt = malloc(MAX_BUF * sizeof(char));
 	
 	strcpy(encrypt, msg);
@@ -32,7 +32,7 @@ char *cc_decryption(char* msg, int key) {
 	
 	int i;
 	int aux;
-	for (i = 0; i < sizeof(msg); i++) {
+	for (i = 0; i < strlen(msg); i++) {
 		if ((msg[i] - key >= 'a' && msg[i] - key <= 'z') || ((msg[i] - key >= 'A' && msg[i] - key <= 'Z'))) {
 			decrypt[i] = msg[i] - key;
 		} else if (msg[i] >= 'a' && msg[i] <= 'z') {
@@ -43,9 +43,6 @@ char *cc_decryption(char* msg, int key) {
 			aux = msg[i] - 'A';
 			decrypt[i] = (aux - key +1) + 'Z';
 		}
-		
-		
-		
 		
 	}
 

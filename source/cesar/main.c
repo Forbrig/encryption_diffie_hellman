@@ -1,14 +1,28 @@
-#include "vigenere_func.h"
+#include "cesar_func.h"
+#include "../file_manager.h"
 
 int main ( ) {
-	char msg[MAX_BUF] = "";
+	
+	//char* msg;
 	char* encrypt;
 	char* decrypt;
 	int key;
 	
 	printf("Write the message to encrypt\n");
+	char msg[MAX_BUF] = "";
 	fgets (msg, MAX_BUF, stdin);
 	//scanf("%s", msg);
+
+	/*
+	msg = file_to_string();
+	
+	printf("%s\n", msg);
+	if (msg == NULL) {
+		printf("Exiting...\n");
+		return 0;
+	}
+	*/
+	
 	printf("Write a key\n");
 	scanf("%d", &key);
 	
