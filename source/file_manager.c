@@ -16,8 +16,8 @@ char* file_to_string(void) {
 		buffer = malloc(length);
 		if (buffer) {
 			fread(buffer, 1, length, in);
-			buffer[length] = '\0';
-			printf("%s\n", buffer);
+			//buffer[length] = '\0';
+			//printf("%s\n", buffer);
 		}
 		fclose(in);
 	}

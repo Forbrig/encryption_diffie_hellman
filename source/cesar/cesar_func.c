@@ -6,7 +6,7 @@ char *cc_encryption(char* msg, int key) {
 	strcpy(encrypt, msg);
 	int i;
 	int aux;
-	printf("%ld\n", strlen(msg));
+	//printf("Size of message: %ld\n", strlen(msg));
 	for (i = 0; i < strlen(msg); i++) {
 		if ((msg[i] + key >= 'a' && msg[i] + key <= 'z') || (msg[i] + key >= 'A' && msg[i] + key <= 'Z')) {
 			encrypt[i] = msg[i] + key;
