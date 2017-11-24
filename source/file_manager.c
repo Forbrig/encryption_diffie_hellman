@@ -1,25 +1,23 @@
 #include "file_manager.h"
 
-char* file_to_string(void) {
+char* file_to_string(FILE * file) {
 	char * buffer = 0;
 	int length;
-	FILE *in; //in file
-	in = fopen("../in.txt", "r"); //open file in lecture mode only (frem where te exe is "../")
 	
-	if (in == NULL) {
+	if (file == NULL) {
 		printf("Cannot open the file...\n");
 		exit(0);
 	} else {
-		fseek(in, 0, SEEK_END); //set the seek on END
-		length = ftell(in);
-		fseek(in, 0, SEEK_SET); //set the seek on START
+		fseek(file, 0, SEEK_END); //set the seek on END
+		length = ftell(file);
+		fseek(file, 0, SEEK_SET); //set the seek on START
 		buffer = malloc(length);
 		if (buffer) {
-			fread(buffer, 1, length, in);
+			fread(buffer, 1, length, file);
 			//buffer[length] = '\0';
 			//printf("%s\n", buffer);
 		}
-		fclose(in);
+		fclose(file);
 	}
 	return buffer;
 }

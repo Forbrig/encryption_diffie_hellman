@@ -7,20 +7,28 @@ int main ( ) {
 	char* encrypt;
 	char* decrypt;
 	int key;
+
+	FILE *in; //in file
+	in = fopen("../in.txt", "r"); //open file in lecture mode only (frem where te exe is "../")
 	
-	printf("Write the message to encrypt\n");
-	/*
-	char msg[MAX_BUF] = "";
-	fgets (msg, MAX_BUF, stdin);
-	//scanf("%s", msg);
-	*/
-	
-	msg = file_to_string();
-	
-	printf("Message:\n%s\n", msg);
-	if (msg == NULL) {
-		printf("Exiting...\n");
-		return 0;
+	if (in == NULL) {
+		printf("Cannot open the file...\n");
+		exit(0);
+	} else {		
+		printf("Write the message to encrypt\n");
+		/*
+		char msg[MAX_BUF] = "";
+		fgets (msg, MAX_BUF, stdin);
+		//scanf("%s", msg);
+		*/
+		
+		msg = file_to_string(in);
+		
+		printf("Message:\n%s\n", msg);
+		if (msg == NULL) {
+			printf("Error parsing the file to string, exiting...\n");
+			return 0;
+		}
 	}
 	
 	printf("Write a key\n");
