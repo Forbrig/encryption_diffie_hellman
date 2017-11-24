@@ -1,4 +1,5 @@
 #include "cesar_func.h"
+#include "cesar_breaker.h"
 
 
 int main ( ) {
@@ -28,7 +29,18 @@ int main ( ) {
 	
 		decrypt = cc_decryption(encrypt, key);
 		printf("Decrypted message:\n%s\n", decrypt);
-	}	
+
+		/*
+		fclose(in);
+		fclose(out);
+		*/
+	}
+
+	/*TESTS*/
+	FILE *test1 = fopen("test/out1.txt", "r");
+	cesar_breaker(test1);
+
+
 
 	return 0;
 }
