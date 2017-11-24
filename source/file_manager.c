@@ -34,3 +34,4 @@ void string_to_file(char* encrypt) {
 	}
 	return;
 }
+
