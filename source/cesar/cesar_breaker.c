@@ -1,19 +1,69 @@
 #include "cesar_breaker.h"
 
 void cesar_breaker(FILE* encrypt){
+	char* dictionary[DIC_SIZE];
 	char* sencrypt;
+	char* aux;
 	sencrypt = file_to_string(encrypt);
 	char* sdecrypt = (char *)malloc(strlen(sencrypt));
 	strcpy(sdecrypt, sencrypt);
 
-	printf("encrypted:\n%s\n", sencrypt);
-	int i, key;
+	//printf("encrypted:\n%s\n", sencrypt);
+	int i, key, point;
+	char *token;
 
-	for (key = 1; key < 256; key++) {
-		for (i = 0; i < strlen(sencrypt); i++) {
-			sdecrypt[i] = sdecrypt[i] - key;
+
+	FILE * dic = fopen("dictionary.dat", "r");
+
+	if (dic == NULL) {
+		printf("Couldn't open the dictionary, exiting...\n");
+		exit(0);
+	} else {
+		aux = file_to_string(dic);
+
+		printf("Words on dictionary:\n%s\n", aux);
+	    
+	    token = strtok(aux, " ");
+	    for (i = 0; token != NULL; i++) {
+			dictionary[i] = token;
+			//printf("%s\n", token);
+
+			token = strtok(NULL, " ");
+	    }
+	    int usable_size = i; //in the dictionary
+	    /*
+	    for (i = 0; i < usable_size; i++) {
+	    	printf("%s\n", dictionary[i]);
+	    }
+		*/
+		char* old_sdecrypt = (char *)malloc(strlen(sencrypt));
+
+		for (key = 1; key < 256; key++) { //ascii have 256 alphanumeric so there is 256 possibilities for the key
+			for (i = 0; i < strlen(sencrypt); i++) {
+				sdecrypt[i] = sdecrypt[i] - key;
+			}
+			strcpy(old_sdecrypt, sdecrypt);
+			point = 0;
+			token = strtok(sdecrypt, " ");
+			
+			while (token != NULL) {
+				for(i = 0; i < usable_size; i++) {
+					if(strcmp(token, dictionary[i]) == 0) { //1 world match with dictionary
+						point++;
+					}
+
+				}
+				//printf("%s\n", token);
+
+				token = strtok(NULL, " ");
+			}
+
+			if (point > 0) {
+
+				printf("key: %d\nmessage:\n%s\n", key, old_sdecrypt);
+
+			}
 		}
-		printf("%s\n", sdecrypt);
 	}
 	return;
 }
