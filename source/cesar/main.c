@@ -29,6 +29,8 @@ int main ( ) {
 	encrypt = cc_encryption(msg, key);
 	printf("%s\n", encrypt);
 
+	string_to_file(encrypt);
+
 	decrypt = cc_decryption(encrypt, key);
 	printf("%s\n", decrypt);
 

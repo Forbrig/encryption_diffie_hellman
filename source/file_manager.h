@@ -3,3 +3,4 @@
 #include <stdlib.h> //dinamic alocation
 
 char* file_to_string(void);
+void string_to_file(char*);

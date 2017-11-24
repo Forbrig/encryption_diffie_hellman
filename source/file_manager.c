@@ -8,7 +8,7 @@ char* file_to_string(void) {
 	
 	if (in == NULL) {
 		printf("Cannot open the file...\n");
-		return 0;
+		exit(0);
 	} else {
 		fseek(in, 0, SEEK_END); //set the seek on END
 		length = ftell(in);
@@ -22,4 +22,17 @@ char* file_to_string(void) {
 		fclose(in);
 	}
 	return buffer;
+}
+
+void string_to_file(char* encrypt) {
+	fclose(fopen("../cesar_encrypt.txt", "w")); //clear the content
+	FILE *cesar_encrypt = fopen("../cesar_encrypt.txt", "ab+");
+	if (cesar_encrypt == NULL) {
+		printf("Couldn't open/create the encrypt file...\n");
+		exit(0);
+	} else {
+		fputs(encrypt, cesar_encrypt);
+		fclose(cesar_encrypt);
+	}
+	return;
 }
