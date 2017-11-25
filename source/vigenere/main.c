@@ -1,4 +1,5 @@
 #include "vigenere_func.h"
+#include "vigenere_breaker.h"
 
 int main ( ) {
 	char * msg;
@@ -6,7 +7,7 @@ int main ( ) {
 	char* repeated_key;
 	char* encrypt;
 	char* decrypt;
-	
+	int i;
 
 	FILE *in; //in file
 	in = fopen("test/test1.txt", "r"); //open file in lecture mode only (frem where te exe is "../")
@@ -20,9 +21,19 @@ int main ( ) {
 	
 		printf("Write a key\n");
 		fgets(key, MAX_BUF, stdin);
-		repeated_key = vc_repeat_key(msg, key);
+
+		//ignore the /n from the end of the string
+		char auxkey[strlen(key)-1];
+		for (i = 0; i < strlen(key) - 1; i++) {
+			auxkey[i] = key[i];
+		}
+		/*
+		printf("key:%s", key);
+		printf("auxkey:%s", auxkey);
+		*/
+
+		repeated_key = vc_repeat_key(msg, auxkey);
 		printf("Repeated key:\n%s\n", repeated_key);
-	
 	
 		encrypt = vc_encryption(msg, repeated_key);
 		printf("Encrypted:\n%s\n", encrypt);
@@ -42,9 +53,10 @@ int main ( ) {
 		*/
 	}
 
-	
-	
-	
+	/*TESTS*/
+	FILE *test1 = fopen("test/out1.txt", "r");
+	vigenere_breaker(test1);
+
 	system("pause");
 	return 0;
 }
