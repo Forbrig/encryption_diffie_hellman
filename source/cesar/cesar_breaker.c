@@ -21,8 +21,8 @@ void cesar_breaker(FILE* encrypt){
 	} else {
 		aux = file_to_string(dic);
 
-		printf("Words on dictionary:\n%s\n", aux);
-	    
+		printf("\nDICTIONARY:\n%s\n", aux);
+
 	    token = strtok(aux, " ");
 	    for (i = 0; token != NULL; i++) {
 			dictionary[i] = token;
@@ -40,7 +40,7 @@ void cesar_breaker(FILE* encrypt){
 		char* aux_sdecrypt = (char *)malloc(strlen(sencrypt));
 
 		strcpy(old_sdecrypt, sdecrypt);
-			
+
 		for (key = 1; key < 256; key++) { //ascii have 256 alphanumeric so there is 256 possibilities for the key
 			for (i = 0; i < strlen(sencrypt); i++) {
 				sdecrypt[i] = old_sdecrypt[i] - key;
@@ -49,8 +49,8 @@ void cesar_breaker(FILE* encrypt){
 			strcpy(aux_sdecrypt, sdecrypt);
 			point = 0;
 			token = strtok(sdecrypt, " ");
-			
-			while (token != NULL) {	
+
+			while (token != NULL) {
 				for(i = 0; i < usable_size; i++) {
 					if(strcmp(token, dictionary[i]) == 0) { //1 world match with dictionary
 						point++;
@@ -63,8 +63,7 @@ void cesar_breaker(FILE* encrypt){
 			}
 
 			if (point > 0) {
-
-				printf("key: %d\nmessage:\n%s\n", key, aux_sdecrypt);
+				printf("\nKEY: %d\nMESSAGE:\n%s\n\n", key, aux_sdecrypt);
 
 			}
 		}
