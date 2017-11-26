@@ -17,6 +17,8 @@ char* file_to_string(FILE * file) {
 		}
 		fclose(file);
 	}
+	buffer[length] = '\0';
+	//printf("in file to string: %s\n", buffer);
 	return buffer;
 }
 

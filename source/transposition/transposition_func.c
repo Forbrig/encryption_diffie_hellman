@@ -7,8 +7,7 @@ char *tc_encryption(char* msg, char* key) {
 	int j = 0;
 	char * new_msg; //full message (when strlen(message) % strlen(key) != 0)
 
-	//printf("%d\n", strlen(key) - 1);
-	for (i = 0; i < strlen(key) - 1; i++) { //all 0
+	for (i = 0; i < strlen(key); i++) { //all 0
 		keypos[i] = 0;
 	}
 
@@ -17,29 +16,20 @@ char *tc_encryption(char* msg, char* key) {
 	key 	= 	balon
 	keypos 	=	21354
 	*/
-
-	for (i = 0; i < strlen(key) - 1; i++) { 
+	for (i = 0; i < strlen(key); i++) { 
 		pos = 0;
-		for (j = 0; j < strlen(key) - 1; j++) {
+		for (j = 0; j < strlen(key); j++) {
 			if (key[i] > key[j]) {
 				pos++;
 			}
 		}
 		keypos[i] = pos + 1;
 	}
-
 	//if strlen(message) % strlen(key) != 0 we need to add more letters on the message (fill to mod be 0)
-	//printf("%d %d %d\n", strlen(msg), strlen(key)-1, strlen(msg) % (strlen(key)-1));
-	//printf("%s\n", msg);
-	if (strlen(msg) % ((strlen(key)-1)) != 0) {
+	if (strlen(msg) % (strlen(key)) != 0) {
 		//aux = how much left to % be == 0
-		int aux = (strlen(key)-1) - (strlen(msg) % (strlen(key)-1));
-
-		//use sizeof(char)
-		new_msg =  malloc(strlen(msg) + aux); //alloc a size that the message should have
-		//printf("tamanho da mensagem nova %d\n", strlen(msg));
-		//printf("tamanho da mensagem nova %d\n", aux);
-		
+		int aux = strlen(key) - (strlen(msg) % strlen(key));
+		new_msg =  malloc(strlen(msg) + aux); // (+1 for \0) alloc a size that the message should have		
 		for (i = 0; i < (strlen(msg) + aux); i++) {
 			if (i < (strlen(msg))) {
 				new_msg[i] = msg[i];
@@ -47,31 +37,25 @@ char *tc_encryption(char* msg, char* key) {
 				new_msg[i] = 'x';
 			}
 		}
-		//printf("tamanho da mensperdjdfagem nova %d\n", strlen(new_msg));
-		
+		new_msg[strlen(msg) + aux] = '\0';	
 	} else { //strlen(message) % strlen(key) == 0
+		printf("same size\n");
 		new_msg = (char *)malloc(strlen(msg));
 		strcpy(new_msg, msg);
 	}
-	printf("complete message: %s\n", new_msg);
 
 	char* encrypt = (char *)malloc(strlen(new_msg));
-	int aux = 0;
-	for (i = 1; i < strlen(key); i++) {
-		j = 0;
-		while (keypos[j] != i) {
-			j++;
-		}
-		j++;
-		//printf("i %d j %d s %c\n", i, j, key[j]);
-		for (i = 0; i < strlen(new_msg); i++) {
-			if (i % j == 0) {
-				encrypt[aux] = new_msg[i];
-				aux++;
-			}
-
+	int n_line = strlen(new_msg)/strlen(key); //nuber of lines that de matrix of should have
+	int aux = 0; //at wich position the encrypted vector is filled
+	int k;
+	for (i = 1; i < strlen(key) + 1; i++) { //key ordenately
+		for (j = 0; keypos[j] != i; j++) {}; //finds the position of the keys ordenately from 1 to strlen(keys) 		
+		for (k = 0; k < n_line; k++) {			
+			encrypt[aux] = new_msg[j + (strlen(key)*k)];
+			aux++;
 		}
 	}
+	encrypt[strlen(new_msg)-1] = '\0';
 	return encrypt;
 }
 

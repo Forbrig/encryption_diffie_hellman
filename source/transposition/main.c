@@ -2,7 +2,7 @@
 
 int main ( ) {
 	char * msg;
-	char key[MAX_BUF] = "";
+	char auxkey[MAX_BUF] = "";
 	char* encrypt;
 	//char* decrypt;
 	
@@ -18,14 +18,14 @@ int main ( ) {
 		printf("Cannot open the file...\n");
 		exit(0);
 	} else {
-		printf("Message to encrypt\n");
 		msg = file_to_string(in);
-		printf("%s\n", msg);
-		printf("Write a key (cant have equal letters)\n");
-		fgets(key, MAX_BUF, stdin);
+		printf("MESSAGE TO ENCRYPT:\n%s\n", msg);
+		printf("Write a key (cant have equal letters):\n");
+		fgets(auxkey, MAX_BUF, stdin);
+		char * key = strtok(auxkey, "\n"); //to get ride of \n from fgets
 		
 		encrypt = tc_encryption(msg, key);
-		printf("Encrypted: %s\n", encrypt);
+		printf("ENCRYPTED MESSAGE:\n%s\n", encrypt);
 	/*
 		decrypt = tc_decryption(encrypt, key);
 		printf("Decrypted: %s\n", decrypt);
