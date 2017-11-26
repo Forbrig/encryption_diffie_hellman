@@ -13,7 +13,7 @@ void vigenere_breaker(FILE* encrypt) {
 	int i, j, point;
 	char *token;
 	char* repeated_key;
-	repeated_key = (char *)malloc(strlen(sencrypt))	;	
+	repeated_key = (char *)malloc(strlen(sencrypt))	;
 
 	FILE * dic = fopen("dictionary.dat", "r");
 
@@ -24,7 +24,7 @@ void vigenere_breaker(FILE* encrypt) {
 		aux = file_to_string(dic);
 
 		//printf("Words on dictionary:\n%s\n", aux);
-	    
+
 	    token = strtok(aux, " ");
 	    for (i = 0; token != NULL; i++) { //separate the words
 			dictionary[i] = token;
@@ -49,29 +49,22 @@ void vigenere_breaker(FILE* encrypt) {
 	    		sdecrypt[j] = old_sdecrypt[j] - repeated_key[j]; //use the barely new key and try to decrypt
 	    	}
 
-	    	//printf("sdec: %s\n", sdecrypt);
 	    	strcpy(aux_sdecrypt, sdecrypt);
 			point = 0;
 			token = strtok(sdecrypt, " "); //break the words where there are spaces
-			while (token != NULL) {	
+			while (token != NULL) {
 				for(j = 0; j < usable_size; j++) {
-					//printf("token: %s dictionary: %s\n", token, dictionary[j]);
 					if(strcmp(token, dictionary[j]) == 0) { //1 world match with dictionary
 						point++;
-						//printf("MATCH!\n");
 					}
-					//printf("	%d\n", j);
-
 				}
-				//printf("%s\n", token);
-
 				token = strtok(NULL, " ");
 			}
 			//printf("dec: %s\n", sdecrypt);
 			if (point > 0) {
-				printf("key:\n%s\nmessage:\n%s\n", dictionary[i], aux_sdecrypt);
+				printf("\nKEY:\n%s\nMESSAGE:\n%s\n", dictionary[i], aux_sdecrypt);
 			}
 	    }
 	}
-	return;	
+	return;
 }
