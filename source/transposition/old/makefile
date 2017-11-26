@@ -1,6 +1,7 @@
 default: 
 	main
 main:
-	gcc *.c ../file_manager.c -o main -Wall
+	gcc *.c -o main -Wall
+	clear
 clean:
 	-rm -f main
