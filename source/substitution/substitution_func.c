@@ -12,12 +12,19 @@ char *sc_encryption(char* msg, char key[]) {
 	return encrypt;
 }
 
-char *sc_decryption(char* msg, char* key) {
-	int i;
-	char* decrypt = malloc(MAX_BUF * sizeof(char));
-	strcpy(decrypt, msg);
-	for (i = 0; i < strlen(msg); i++) {
-		decrypt[i] = decrypt[i] - key[i];
+char *sc_decryption(char* msg, char key[]) {
+	int i, j, size = strlen(msg);;
+	char* decrypt = malloc(size * sizeof(char));
+
+
+	for (j = 0; j < size; j++) {
+		for (i = 0; i < 256; i++) {
+			if (key[i] == msg[j]) {
+				decrypt[j] = i;
+				break;
+			}
+		}
 	}
+
 	return decrypt;
 }
