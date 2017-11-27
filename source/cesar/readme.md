@@ -1,2 +1,2 @@
-To compile (in the directory):
+To compile (in the directory):  
 **make main**
