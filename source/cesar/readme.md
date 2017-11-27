@@ -35,6 +35,11 @@ $ ./cesar
 * Change the message that you want to encrypt in **/test/test1.txt**.  
 * You can have a look at the encrypted message in **/test/out1.txt**.  
 * The **key** (an integer) for caerser is inserted manually via terminal.  
+* Breaker try to breake the encrypted message in **/test/out1.txt**.
+
+### Breaker
+
+* The breaker is a brute force algorithm that try the 256 keys possibilities (number of chars in _ascii_). For each possibilitie it break words by space and see if there is a word that match equaly in **dictionaty.dat**.
 
 ## Authors
 
