@@ -1,6 +1,6 @@
-# Cesar Cipher
+# Caesar Cipher
 
-Cesar Cipher..
+Caesar Cipher is one of the most known encryption algorithm. See more at [Wiki](https://en.wikipedia.org/wiki/Caesar_cipher)
 
 ## Getting Started
 
@@ -35,22 +35,6 @@ $./cesar
 * Change the message that you want to encrypt in **/test/test1.txt**.  
 * You can have a look at the encrypted message in **/test/out1.txt**.  
 * The **key** for vigenere is inserted manually via terminal.  
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Authors
 
