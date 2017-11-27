@@ -1,6 +1,6 @@
 # Caesar Cipher
 
-Caesar Cipher is one of the most known encryption algorithm. See more at [Wiki](https://en.wikipedia.org/wiki/Caesar_cipher)
+Caesar Cipher is one of the most known encryption algorithm. See more at [Wiki](https://en.wikipedia.org/wiki/Caesar_cipher).
 
 ## Getting Started
 
@@ -15,18 +15,18 @@ To compile you need to have **gcc** on your machine.
 To compile the cesar algorithm and its breaker you need type in terminal _(on cesar folder)_:
 
 ```
-**$make main**
+$ make main
 ```
 
 If you already have the files compiled and need to remove it:  
 
 ```
-$make clean
+$ make clean
 ```
 Run the application:
 
 ```
-$./cesar
+$ ./cesar
 ```
 
 ## Running the tests
