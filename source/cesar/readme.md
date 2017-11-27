@@ -1,12 +1,62 @@
-To compile (in the directory):  
-**$ make main**  
-Remove the compiled file:  
-**$ make clean**  
-Run the aplication:  
-**$ ./cesar**  
-####  About the tests:
-* Change the message in **/test/test1.txt**  
-* You can have a look at the encrypted message in **/test/out1.txt**  
-* The **key** for vigenere is inserted manually via terminal  
-* You can always look at the contents of message and encrypted on terminal  
-## About Cesar Cipher  
+# Cesar Cipher
+
+Cesar Cipher..
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+To compile you need to have **gcc** on your machine.  
+
+### Installing
+
+To compile the cesar algorithm and its breaker you need type in terminal _(on cesar folder)_:
+
+```
+**$make main**
+```
+
+If you already have the files compiled and need to remove it:  
+
+```
+**$make clean**
+```
+Run the application:
+
+```
+**$./cesar**
+```
+
+## Running the tests
+
+* You can always look at the contents of message and encrypted message on terminal.  
+* Change the message that you want to encrypt in **/test/test1.txt**.  
+* You can have a look at the encrypted message in **/test/out1.txt**.  
+* The **key** for vigenere is inserted manually via terminal.  
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Authors
+
+* **Vitor G. Forbrig** - *Initial work* - [Forbrig](https://github.com/Forbrig)
+*
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
