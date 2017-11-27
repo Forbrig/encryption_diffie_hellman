@@ -4,7 +4,7 @@ Caesar Cipher is one of the most known encryption algorithm. See more at [Wiki](
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -12,7 +12,7 @@ To compile you need to have **gcc** on your machine.
 
 ### Installing
 
-To compile the cesar algorithm and its breaker you need type in terminal _(on cesar folder)_:
+After maching prerequisites you need to compile the cesar algorithm and its breaker. Type in terminal _(on cesar folder)_:
 
 ```
 $ make main
