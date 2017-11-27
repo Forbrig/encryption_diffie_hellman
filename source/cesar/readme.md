@@ -21,12 +21,12 @@ To compile the cesar algorithm and its breaker you need type in terminal _(on ce
 If you already have the files compiled and need to remove it:  
 
 ```
-**$make clean**
+$make clean
 ```
 Run the application:
 
 ```
-**$./cesar**
+$./cesar
 ```
 
 ## Running the tests
@@ -54,8 +54,7 @@ Give an example
 
 ## Authors
 
-* **Vitor G. Forbrig** - *Initial work* - [Forbrig](https://github.com/Forbrig)
-*
+* **Vitor G. Forbrig** - [Forbrig](https://github.com/Forbrig)
 
 ## License
 
