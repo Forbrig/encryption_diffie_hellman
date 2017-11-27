@@ -34,7 +34,7 @@ $ ./vigenere
 * You can always look at the contents of message and encrypted message on terminal.  
 * Change the message that you want to encrypt in **/test/test1.txt**.  
 * You can have a look at the encrypted message in **/test/out1.txt**.  
-* The **key** for vigenere is inserted manually via terminal.  
+* The **key** (a string) for vigenere is inserted manually via terminal.  
 
 ## Authors
 
