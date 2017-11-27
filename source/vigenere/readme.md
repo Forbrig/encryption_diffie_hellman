@@ -36,6 +36,10 @@ $ ./vigenere
 * You can have a look at the encrypted message in **/test/out1.txt**.  
 * The **key** (a string) for vigenere is inserted manually via terminal.  
 
+### Breaker
+
+
+
 ## Authors
 
 * **Vitor G. Forbrig** - [Forbrig](https://github.com/Forbrig)
