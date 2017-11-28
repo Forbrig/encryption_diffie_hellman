@@ -6,3 +6,4 @@
 
 char *sc_encryption(char*, char*);
 char *sc_decryption(char*, char*);
+char *sc_breaker(char*, int[]);
