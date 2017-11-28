@@ -2,7 +2,7 @@
 
 int main () {
 	char * msg;
-	int frequency[] = { 97,  101, 111, 115, 114, 105, 110,
+	int frequency[] = { 97,  32, 101, 111, 115, 114, 105, 110,
 						100, 109, 117, 116, 99,  108, 112,
 						118, 103, 104, 113, 98,  102, 122,
 						106, 120, 107, 119, 121};
@@ -46,7 +46,8 @@ int main () {
 		decrypt = sc_decryption(encrypt, dict);
 		printf("\nDECRYPTED MESSAGE:\n%s\n", decrypt);
 
-		printf("\nBROKE KEY MESSAGE:\n%s\n", sc_breaker(encrypt, frequency));
+		decrypt = sc_breaker(encrypt, frequency);
+		printf("\nBROKE KEY MESSAGE:\n%s\n", decrypt);
 
 	}
 	return 0;
