@@ -52,6 +52,7 @@ char* tc_fill_msg(char* msg, char* key) {
 		}
 		new_msg[aux] = '\0';	
 	} else { //strlen(message) % strlen(key) == 0
+		//printf("same size\n");
 		new_msg = (char *)malloc(strlen(msg));
 		strcpy(new_msg, msg);
 	}

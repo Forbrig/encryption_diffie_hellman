@@ -1,4 +1,5 @@
 #include "transposition_func.h"
+#include "transposition_breaker.h"
 
 int main ( ) {
 	char * msg;
@@ -26,11 +27,20 @@ int main ( ) {
 		
 		encrypt = tc_encryption(msg, key);
 		printf("ENCRYPTED MESSAGE:\n%s\n", encrypt);
+
+		fclose(fopen("test/out1.txt", "w")); //clear the content
+		FILE *out = fopen("test/out1.txt", "ab+");
+		string_to_file(encrypt, out); // trows the encrypted content to a file_to_string
 	
 		decrypt = tc_decryption(encrypt, key);
 		printf("DECRYPTED MESSAGE:\n%s\n", decrypt);
 
 	}
+
+	/*TESTS*/
+	FILE *test1 = fopen("test/out1.txt", "r");
+	transposition_breaker(test1);
+
 
 	system("pause");
 	return 0;
