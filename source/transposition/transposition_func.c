@@ -1,21 +1,21 @@
 #include "transposition_func.h"
 
-char *tc_encryption(char* msg, char* key) {
-	int pos; 
-	int keypos[strlen(key) - 1]; //ignoring /n
-	int i = 0;
-	int j = 0;
-	char * new_msg; //full message (when strlen(message) % strlen(key) != 0)
 
+/*
+in the keypost put numbers of wich letter come first in the alphabet (ordenation):
+key 	= 	balon
+keypos 	=	21354
+*/
+int * tc_ordenate_key(char* key) {
+	int i, j;
+	int pos;
+	int * keypos = malloc(sizeof(int) * (strlen(key) - 1));
+	//int keypos[strlen(key) - 1]; //ignoring /n
 	for (i = 0; i < strlen(key); i++) { //all 0
 		keypos[i] = 0;
 	}
 
-	/*
-	//in the keypost put numbers of wich letter come first in the alphabet (ordenation):
-	key 	= 	balon
-	keypos 	=	21354
-	*/
+	
 	for (i = 0; i < strlen(key); i++) { 
 		pos = 0;
 		for (j = 0; j < strlen(key); j++) {
@@ -25,6 +25,17 @@ char *tc_encryption(char* msg, char* key) {
 		}
 		keypos[i] = pos + 1;
 	}
+
+	return keypos;
+}
+
+char * tc_encryption(char* msg, char* key) {
+	int i, j;
+	char * new_msg; //full message (when strlen(message) % strlen(key) != 0)
+	int * keypos;
+
+	keypos = tc_ordenate_key(key);
+	
 	//if strlen(message) % strlen(key) != 0 we need to add more letters on the message (fill to mod be 0)
 	if (strlen(msg) % (strlen(key)) != 0) {
 		//aux = how much left to % be == 0
@@ -59,17 +70,25 @@ char *tc_encryption(char* msg, char* key) {
 	return encrypt;
 }
 
-/*
-char *tc_decryption(char* msg, char* key) {
-	char* decrypt = malloc(strlen(char));
-	strcpy(decrypt, msg);
-	
-	int i;
-	//int aux;
-	for (i = 0; i < strlen(msg); i++) {
 
+char * tc_decryption(char* msg, char* key) {
+	int i, j, k;
+	int * keypos;
+	char* decrypt = (char *) malloc(strlen(msg));
+	int n_line = strlen(msg)/strlen(key); //nuber of lines that de matrix of should have
+	//strcpy(decrypt, msg);
+	
+	keypos = tc_ordenate_key(key);
+	
+	int aux = 0;
+	for (i = 1; i < strlen(key) + 1; i++) { //key ordenately
+		for (j = 0; keypos[j] != i; j++) {}; //finds the position of the keys ordenately from 1 to strlen(keys)
+		for (k = 0; k < n_line; k++) {
+			decrypt[j + (strlen(key)*k)] = msg[aux];
+			aux++;
+		}
 	}
 
+	decrypt[strlen(msg)-1] = '\0';
 	return decrypt;
 }
-*/

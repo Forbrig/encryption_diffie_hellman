@@ -4,7 +4,7 @@ int main ( ) {
 	char * msg;
 	char auxkey[MAX_BUF] = "";
 	char* encrypt;
-	//char* decrypt;
+	char* decrypt;
 	
 	/*
 	printf("Write the message to encrypt\n");
@@ -26,10 +26,10 @@ int main ( ) {
 		
 		encrypt = tc_encryption(msg, key);
 		printf("ENCRYPTED MESSAGE:\n%s\n", encrypt);
-	/*
+	
 		decrypt = tc_decryption(encrypt, key);
-		printf("Decrypted: %s\n", decrypt);
-	*/	
+		printf("DECRYPTED MESSAGE:\n%s\n", decrypt);
+
 	}
 
 	system("pause");
