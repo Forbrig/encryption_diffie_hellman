@@ -2,7 +2,11 @@
 
 int main () {
 	char * msg;
-	char key[MAX_BUF] = "";
+	int frequency[] = { 97,  32, 101, 111, 115, 114, 105, 110,
+						100, 109, 117, 116, 99,  108, 112,
+						118, 103, 104, 113, 98,  102, 122,
+						106, 120, 107, 119, 121};
+
 	char dict[] = {	0, 	 1,	  2,   3, 	4, 	 5,   6,   7, 	8, 	 9,   10,  11,  12,  13,  14,  15,
 					16,	 17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,
 					32,	 33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,
@@ -21,10 +25,9 @@ int main () {
 					240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255};
 	char* encrypt;
 	char* decrypt;
-	int i;
 
 	FILE *in; //in file
-	in = fopen("test/test1.txt", "r"); //open file in lecture mode only (frem where te exe is "../")
+	in = fopen("test/test1.txt", "r"); //open file in read mode only (from where te exe is "../")
 	if (in == NULL) {
 		printf("Cannot open the file...\n");
 		exit(0);
@@ -42,6 +45,9 @@ int main () {
 
 		decrypt = sc_decryption(encrypt, dict);
 		printf("\nDECRYPTED MESSAGE:\n%s\n", decrypt);
+
+		decrypt = sc_breaker(encrypt, frequency);
+		printf("\nBROKE KEY MESSAGE:\n%s\n", decrypt);
 
 	}
 	return 0;

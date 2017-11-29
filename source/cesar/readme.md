@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-To compile you need to have **gcc** on your machine.  
+To compile you need to have **gcc** (or equivalent) on your machine.  
 
 ### Installing
 
@@ -31,15 +31,16 @@ $ ./cesar
 
 ## Running the tests
 
-* You can always look at the contents of message and encrypted message on terminal.  
-* Change the message that you want to encrypt in **/test/test1.txt**.  
+* You can look at the contents of message and encrypted message on terminal.  
+* You can change the message that you want to encrypt in **/test/test1.txt**.  
 * You can have a look at the encrypted message in **/test/out1.txt**.  
 * The **key** (an integer) for caerser is inserted manually via terminal.  
 * Breaker try to breake the encrypted message in **/test/out1.txt**.
+* You can change the words on **dictionary.dat**, the algorithm break the words by space.
 
-### Breaker
+### Breaking the encryption
 
-* The breaker is a brute force algorithm that try the 256 keys possibilities (number of chars in _ascii_). For each possibilitie it break words by space and see if there is a word that match equaly in **dictionaty.dat**.
+* The breaker is a brute force algorithm that try all the 256 keys possibilities (number of chars in _ascii_). For each possibilitie it break the resultant string in words by space and see if there is a word that match equaly in **dictionary.dat**.
 
 ## Authors
 
