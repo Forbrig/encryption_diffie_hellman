@@ -6,7 +6,7 @@ in the keypost put numbers of wich letter come first in the alphabet (ordenation
 key 	= 	balon
 keypos 	=	21354
 */
-int * tc_ordenate_key(char* key) {
+int* tc_ordenate_key(char* key) {
 	int i, j;
 	int pos;
 	int * keypos = malloc(sizeof(int) * (strlen(key) - 1));
@@ -29,31 +29,42 @@ int * tc_ordenate_key(char* key) {
 	return keypos;
 }
 
-char * tc_encryption(char* msg, char* key) {
-	int i, j;
-	char * new_msg; //full message (when strlen(message) % strlen(key) != 0)
-	int * keypos;
+/*
+when the message dont fill the matrix that has many columns as the key letters,
+we need to add more letters to it length reach the expected.
+*/
+char* tc_fill_msg(char* msg, char* key) {
+	int i;
+	char* new_msg; //full message (when strlen(message) % strlen(key) != 0)
 
-	keypos = tc_ordenate_key(key);
-	
 	//if strlen(message) % strlen(key) != 0 we need to add more letters on the message (fill to mod be 0)
 	if (strlen(msg) % (strlen(key)) != 0) {
 		//aux = how much left to % be == 0
-		int aux = strlen(key) - (strlen(msg) % strlen(key));
-		new_msg =  malloc(strlen(msg) + aux); // (+1 for \0) alloc a size that the message should have		
-		for (i = 0; i < (strlen(msg) + aux); i++) {
+		int aux = strlen(msg) + strlen(key) - (strlen(msg) % strlen(key));
+		new_msg = malloc(aux * sizeof(char)); // alloc a size that the message should have		
+		for (i = 0; i < (aux); i++) {
+			//printf("%d\n", i);
 			if (i < (strlen(msg))) {
 				new_msg[i] = msg[i];
 			} else {
 				new_msg[i] = 'x';
 			}
 		}
-		new_msg[strlen(msg) + aux] = '\0';	
+		new_msg[aux] = '\0';	
 	} else { //strlen(message) % strlen(key) == 0
-		printf("same size\n");
 		new_msg = (char *)malloc(strlen(msg));
 		strcpy(new_msg, msg);
 	}
+	return new_msg;
+}
+
+char* tc_encryption(char* msg, char* key) {
+	int i, j;
+	int* keypos;
+	char* new_msg;
+
+	keypos = tc_ordenate_key(key);
+	new_msg = tc_fill_msg(msg, key);
 
 	char* encrypt = (char *)malloc(strlen(new_msg));
 	int n_line = strlen(new_msg)/strlen(key); //nuber of lines that de matrix of should have
@@ -66,17 +77,16 @@ char * tc_encryption(char* msg, char* key) {
 			aux++;
 		}
 	}
-	encrypt[strlen(new_msg)-1] = '\0';
+	encrypt[strlen(new_msg)] = '\0';
 	return encrypt;
 }
 
 
-char * tc_decryption(char* msg, char* key) {
+char* tc_decryption(char* msg, char* key) {
 	int i, j, k;
 	int * keypos;
 	char* decrypt = (char *) malloc(strlen(msg));
 	int n_line = strlen(msg)/strlen(key); //nuber of lines that de matrix of should have
-	//strcpy(decrypt, msg);
 	
 	keypos = tc_ordenate_key(key);
 	
