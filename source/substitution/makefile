@@ -1,10 +1,10 @@
 default:
 	main
 main:
-	gcc *.c ../file_manager.c -o main -Wall
+	gcc *.c ../file_manager.c -o substituition -Wall
 clean:
-	-rm -f main
+	-rm -f substituition
 
 all:
-	rm -f main
-	gcc *.c ../file_manager.c -o main -Wall
+	rm -f substituition
+	gcc *.c ../file_manager.c -o substituition -Wall

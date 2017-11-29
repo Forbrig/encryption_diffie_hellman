@@ -3,4 +3,4 @@ default:
 main:
 	gcc *.c ../file_manager.c -o vigenere -Wall
 clean:
-	-rm -f main
+	-rm -f vigenere
