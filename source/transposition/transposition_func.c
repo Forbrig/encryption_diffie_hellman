@@ -41,7 +41,7 @@ char* tc_fill_msg(char* msg, char* key) {
 	if (strlen(msg) % (strlen(key)) != 0) {
 		//aux = how much left to % be == 0
 		int aux = strlen(msg) + strlen(key) - (strlen(msg) % strlen(key));
-		new_msg = malloc(aux * sizeof(char)); // alloc a size that the message should have		
+		new_msg = (char *)malloc(aux + 1); // alloc a size that the message should have		
 		for (i = 0; i < (aux); i++) {
 			//printf("%d\n", i);
 			if (i < (strlen(msg))) {
@@ -66,7 +66,8 @@ char* tc_encryption(char* msg, char* key) {
 	keypos = tc_ordenate_key(key);
 	new_msg = tc_fill_msg(msg, key);
 
-	char* encrypt = (char *)malloc(strlen(new_msg));
+	printf("%s\n",  new_msg	);
+	char* encrypt = (char *)malloc(strlen(new_msg) + 1);
 	int n_line = strlen(new_msg)/strlen(key); //nuber of lines that de matrix of should have
 	int aux = 0; //at wich position the encrypted vector is filled
 	int k;
@@ -99,6 +100,6 @@ char* tc_decryption(char* msg, char* key) {
 		}
 	}
 
-	decrypt[strlen(msg)-1] = '\0';
+	decrypt[strlen(msg)] = '\0';
 	return decrypt;
 }
