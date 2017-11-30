@@ -35,8 +35,8 @@ $ ./cesar
 * You can change the message that you want to encrypt in **/test/test1.txt**.  
 * You can have a look at the encrypted message in **/test/out1.txt**.  
 * The **key** (an integer) for caerser is inserted manually via terminal.  
-* Breaker try to break the encrypted message in **/test/out1.txt**.
-* You can change the words on **dictionary.dat**, the algorithm break the words by space.
+* Breaker try to break the encrypted message written in **/test/out1.txt**.
+* You can change the words on **dictionary.dat**, the algorithm break the words by space.  
 
 ### Breaking the encryption
 
