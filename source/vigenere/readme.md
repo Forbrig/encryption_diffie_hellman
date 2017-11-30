@@ -40,7 +40,8 @@ $ ./vigenere
 
 ### Breaker
 
-* As known, trying to use brute force to find the key can be painful because (in our case, _256 ascii_) for each letter in the key length it add 256 possibilities. So if the key have 10 of length it must be between the 256^10 possibilities. With that in mind I've chose to try using the words on **dictionary.dat** as the key, and for each of these keys the algorithm breaks the decrypted message by spaces and compare if there is a word that match equaly in **dictionary.dat**. FOr each match it add a point, if in the end the key/decrypted message has a point it will be printed on the screen.
+* As known, trying to use brute force to find the key can be painful because (in our case, _256 ascii_) for each letter in the key length it add 256 possibilities. So if the key have 10 of length it must be between the 256^10 possibilities. With that in mind I've chose to try using the words on **dictionary.dat** as the keys.  
+* For each of the keys picked on dictionary as the key, the algorithm decrypt the message and breaks it in _tokens_ by spaces and compare if there is a word that match equaly in **dictionary.dat**. For each match it add a point, if after comparing all the tokens the key/decrypted message has a point it will be printed on the screen.
 
 ```c
 point = 0;
