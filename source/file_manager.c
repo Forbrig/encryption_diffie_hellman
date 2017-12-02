@@ -33,41 +33,32 @@ void string_to_file(char* encrypt, FILE * file) {
 	return;
 }
 
-//increase/decrease amount of allocated strings
-void realloc_vector_of_string(char** string, int new_size) {
-	printf("new size: %d %d\n", new_size, sizeof(&string));
-	string = realloc(string, new_size);
-	return;
-}
-
 //break the string in a vector of strings (breaking by spaces)
-//destroy the original string
+//the last index of the result vector is == NULL so we can loop into it till vector[i] == NULL!
+//note: destroy the original string
 char** string_break(char* string) {
-	int i, count = 0; //to know the size that the vector should have
+	int i; //to know the size that the vector should have
 	char** string_vector  = malloc(sizeof(char*)); //start the vector
 	char* token;
 	token = strtok(string, " "); //put the first word in the token
 	for (i = 0; token != NULL; i++) {
-		count++;
-		realloc_vector_of_string(string_vector, count);
-		string_vector[i] = malloc(sizeof(token));
-		//string_vector[i] = malloc(sizeof(token)+1);
-		string_vector[i] = token;
-		//string_vector[i][sizeof(token)+1] = '\0';
-		printf("%s\n", string_vector[i]);
+		string_vector = (char**)realloc(string_vector, (i+1) * sizeof(char*));
+		string_vector[i] = (char*)malloc(sizeof(token));
+		(string_vector)[i] = token;
 		token = strtok(NULL, " ");
 	}
+	string_vector = (char**)realloc(string_vector, (i+1) * sizeof(char*));
+	string_vector[i] = NULL;
 	return string_vector;
 }
 
-/*
-//number of strings in the string vector
-int size_of_string_vector (char** string_vector) {
-	int count;
-	
-	
-	
-	
-	return count;
+//loop to free alocated array of string
+void free_string_array(char** string_array) {
+	int i;
+	//char * aux;
+	for(i = 0; string_array[i] != NULL; i++) { //free the alocated spaces in the indexes
+		//printf("%d %s\n", i, string_array[i]);
+	}
+	free(string_array); //free the array pointer
+	return;
 }
-*/
