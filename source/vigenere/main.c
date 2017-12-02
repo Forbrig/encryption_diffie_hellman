@@ -19,23 +19,19 @@ int main ( ) {
 		fgets(key, MAX_BUF, stdin);
 
 		msg = file_to_string(in);
-		printf("\nMESSAGE TO ENCRYPT:\n%s\n", msg);
+		printf("MESSAGE TO ENCRYPT:\n%s\n", msg);
 
 		//ignore the /n from the end of the string
 		char auxkey[strlen(key)-1];
 		for (i = 0; i < strlen(key) - 1; i++) {
 			auxkey[i] = key[i];
 		}
-		/*
-		printf("key:%s", key);
-		printf("auxkey:%s", auxkey);
-		*/
 
 		repeated_key = vc_repeat_key(msg, auxkey);
-		printf("\nREPEATED KEY:\n%s\n", repeated_key);
+		printf("REPEATED KEY:\n%s\n", repeated_key);
 
 		encrypt = vc_encryption(msg, repeated_key);
-		printf("\nENCRYPTED MESSAGE:\n%s\n", encrypt);
+		printf("ENCRYPTED MESSAGE:\n%s\n", encrypt);
 
 		fclose(fopen("test/out1.txt", "w")); //clear the content
 		FILE *out = fopen("test/out1.txt", "ab+");
@@ -43,7 +39,7 @@ int main ( ) {
 
 
 		decrypt = vc_decryption(encrypt, repeated_key);
-		printf("\nDECRYPTED MESSAGE:\n%s\n", decrypt);
+		printf("DECRYPTED MESSAGE:\n%s\n", decrypt);
 
 
 		/*
@@ -53,9 +49,17 @@ int main ( ) {
 	}
 
 	/*TESTS*/
-	FILE *test1 = fopen("test/out1.txt", "r");
-	vigenere_breaker(test1);
 
+	printf("***TRYING TO BREAK THE CIPHER***\n");
+
+	FILE *test1 = fopen("test/out1.txt", "r");
+
+	if (test1 == NULL) {
+		printf("Cannot open the file...\n");
+		exit(0);
+	} else {
+		vigenere_breaker(test1);
+	}
 	system("pause");
 	return 0;
 }

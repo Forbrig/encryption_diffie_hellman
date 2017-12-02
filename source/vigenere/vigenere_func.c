@@ -1,7 +1,7 @@
 #include "vigenere_func.h"
 
 char *vc_repeat_key(char* msg, char* key) {
-	char* repeated_key = malloc(MAX_BUF * sizeof(char));
+	char* repeated_key = malloc(strlen(msg) * sizeof(char));
 	int i;
 	//make it ignore the /n's
 	if (key[strlen(key)] == '\n') {
@@ -10,13 +10,13 @@ char *vc_repeat_key(char* msg, char* key) {
 	for (i = 0; i < strlen(msg); i++) {	
 		repeated_key[i] = key[i % (strlen(key))];	
 	}
-	//repeated_key[j-1] = '\0';
+	repeated_key[strlen(msg)] = '\0';
 	return repeated_key;
 }
 
 char *vc_encryption(char* msg, char* key) {
 	int i;
-	char* encrypt = malloc(MAX_BUF * sizeof(char));
+	char* encrypt = malloc(strlen(msg) * sizeof(char));
 	strcpy(encrypt, msg);
 	for (i = 0; i < strlen(msg); i++) {
 		encrypt[i] = encrypt[i] + key[i];
